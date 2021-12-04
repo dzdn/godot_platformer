@@ -1,13 +1,29 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://CameraController.gd" type="Script" id=5]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=6]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 65, 37 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 301 )
+current = true
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 6 )]
 
 [node name="Tile" parent="." instance=ExtResource( 2 )]
 position = Vector2( 32, 568 )
@@ -103,3 +119,15 @@ position = Vector2( 992, 568 )
 position = Vector2( 288, 504 )
 speed = 500
 moveDist = 512
+
+[node name="Coin" parent="." instance=ExtResource( 4 )]
+position = Vector2( 280, 160 )
+
+[node name="Coin2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 576, 224 )
+
+[node name="Coin3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 776, 224 )
+
+[node name="Coin4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 968, 496 )

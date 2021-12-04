@@ -14,6 +14,8 @@ var grounded : bool = false
 
 # components
 onready var sprite = $Sprite
+onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,3 +51,12 @@ func _physics_process(delta):
 		sprite.flip_h = true
 	elif vel.x > 0:
 		sprite.flip_h = false
+
+# called when we run into a coin
+func collect_coin(value):
+	score += value
+	ui.set_score_text(score)
+
+# called when we hit an enemy
+func die():
+	get_tree().reload_current_scene()
